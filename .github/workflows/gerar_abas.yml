@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'dados.xlsx'  # Executa quando o arquivo Excel é modificado
+      - 'dados.xlsx'
 
 jobs:
   processar-excel:
@@ -12,8 +12,8 @@ jobs:
     
     steps:
     - name: Checkout do código
-      uses: actions/checkout@v3
-      
+      uses: actions/checkout@v4  # Atualizado para v4
+    
     - name: Configurar Python
       uses: actions/setup-python@v4
       with:
@@ -29,7 +29,7 @@ jobs:
         python criar_abas.py
         
     - name: Fazer upload do arquivo processado
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  # Versão atualizada para v4
       with:
         name: excel-processado
         path: dados_com_abas_mensais.xlsx
